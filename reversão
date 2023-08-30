@@ -1,0 +1,17 @@
+def inverterEmParenteses(stringEntrada):
+    abertura = stringEntrada.find("(")
+    
+    if abertura == -1:
+        return stringEntrada
+    
+    fechamento = stringEntrada.rfind(")", abertura)
+    
+    stringReversa = stringEntrada[abertura + 1:fechamento][::-1]
+    
+    return inverterEmParenteses(stringEntrada[:abertura] + stringReversa + stringEntrada[fechamento + 1:])
+
+
+print(inverterEmParenteses("(bar)"))
+print(inverterEmParenteses("foo(bar)baz"))
+print(inverterEmParenteses("foo(bar)baz(blim)"))
+print(inverterEmParenteses("foo(bar(baz))blim"))
